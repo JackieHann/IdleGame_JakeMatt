@@ -11,6 +11,11 @@
 #define ConsoleUtilsH
 
 #include <windows.h>
+#include <string>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 
 //colour constants for translation
@@ -43,6 +48,8 @@ void SelectBackColour(int colour);
 
 //select a text colour from the colour constants list
 void SelectTextColour(int colour);
+
+void ShowMessage(const WORD backColour, const WORD textColour, int x, int y, const string message);
 
 //select the text attributes
 void SelectAttributes();

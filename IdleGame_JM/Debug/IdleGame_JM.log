@@ -1,5 +1,3 @@
-﻿  main.cpp
-c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\main.cpp(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  ConsoleUtils_JH.cpp
-  Generating Code...
+﻿  UserInterface.cpp
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\userinterface.cpp(65): warning C4018: '<': signed/unsigned mismatch
   IdleGame_JM.vcxproj -> C:\Users\Jake\Desktop\IdleGame_JakeMatt\Debug\IdleGame_JM.exe

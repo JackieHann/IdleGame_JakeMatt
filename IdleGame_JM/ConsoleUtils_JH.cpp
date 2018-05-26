@@ -98,6 +98,14 @@ void SelectTextColour(int colour)
 	SelectAttributes();
 }
 
+void ShowMessage(const WORD backColour, const WORD textColour, int x, int y, const string message)
+{
+	Gotoxy(x, y);
+	SelectBackColour(backColour);
+	SelectTextColour(textColour);
+	cout << message;
+}
+
 //-------------
 //select the text attributes
 void SelectAttributes()
