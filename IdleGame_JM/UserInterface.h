@@ -21,11 +21,11 @@ class UserInterface {
 public:
 	int		showMainMenuAndGetCommand() const;
 	string	showNameInputAndGet() const;
-	void	showPlayerStatus(string, int, float, string, string) const;
+	void	showPlayerStatus(string pName, int pLevel, float pExp, string pAct, string pLoc, float pMaxHP, float pMinHP, float pDamageMax, float pDamageMin) const;
 	void	showPlayerLog(vector<string>) const;
 	void	showTitle() const;
 	void	showBattle(Enemy) const;
-
+	void	showBattleLog(Enemy) const;
 private:
 	int		readInCommand() const;
 	void	outputLine(const string&) const;

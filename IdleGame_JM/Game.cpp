@@ -9,6 +9,7 @@ Game::Game()
 
 Game::~Game()
 {
+	delete thePlayer_;
 }
 
 void Game::start()
@@ -29,21 +30,7 @@ void Game::start()
 	while (command != 0)
 	{
 		
-		//if S is pressed
-		if (GetKeyState('S') & 0x8000)
-		{
-			if (!keyPressed)
-			{
-				keyPressed = true;
-				//exit loop condition
-				Clrscr();
-				//enter shop loop
-				updateUI();
-
-				cout << "Went to shop" << endl;
-			}
-		}
-		else if(GetKeyState('L') & 0x8000)
+		if(GetKeyState('L') & 0x8000)
 		{
 			if (!keyPressed)
 			{
@@ -77,7 +64,7 @@ void Game::start()
 void Game::update()
 {
 	//Get random number from 0 -> 2
-	int event = rand() % 2;
+	int event = rand() % 3;
 
 	//If you get a 1 (do something)
 	if (event == 1)
@@ -96,13 +83,14 @@ void Game::update()
 void Game::updateUI()
 {
 	theUI_.showTitle();
-	theUI_.showPlayerStatus(thePlayer_->getName(), thePlayer_->getLevel(), thePlayer_->getPercentExp(), thePlayer_->getCurrAction(), thePlayer_->getCurrLocation());
+	theUI_.showPlayerStatus(thePlayer_->getName(), thePlayer_->getLevel(), thePlayer_->getPercentExp(), thePlayer_->getCurrAction(), thePlayer_->getCurrLocation(), thePlayer_->getMaxHP(), thePlayer_->getCurrHP(), thePlayer_->getMaximumDmg(), thePlayer_->getMinimumDmg());
 	theUI_.showPlayerLog(thePlayer_->getLog());
 
 	//If battle dialogue should be shown
-	if (thePlayer_->getCurrAction() == "Battling")
+	if (thePlayer_->getCurrAction() == "Battling" || thePlayer_->getCurrAction() == "Looting" || thePlayer_->getCurrAction() == "Returning")
 	{
 		theUI_.showBattle(thePlayer_->getEnemy());
+		theUI_.showBattleLog(thePlayer_->getEnemy());
 	}
 		
 }

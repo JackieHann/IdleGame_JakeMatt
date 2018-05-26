@@ -20,6 +20,8 @@ struct Enemy
 
 	float eAccuracy;
 	float eDropRate;
+	
+	vector<string> battleLog;
 };
 
 class Player {
@@ -31,19 +33,27 @@ public:
 	void incExp(const float);
 	void setCurrAction(const string& str) { currentAction_ = str; };
 	void addToLog(const string&);
+	void addToBattleLog(const string&);
 	void update();
+
 	void setupEnemy();
 	void attackEnemy();
+	void attackPlayer();
 
+	void resetStats();
 
-
-	string	getName()	{ return name_; };
-	int		getLevel()	{ return level_; };
+	string	getName()		{ return name_; };
+	int		getLevel()		{ return level_; };
 	float	getPercentExp() { return ((float)(int)(currentExp_ / nextLevelExp_ * 100.0f)); };
-	string	getCurrAction(){ return currentAction_; };
-	string	getCurrLocation() { return currentLocation_; };
+	string	getCurrAction()	{ return currentAction_; };
+	string	getCurrLocation(){ return currentLocation_; };
 	vector<string> getLog() { return log_; };
-	Enemy	getEnemy() { return enemy; };
+	Enemy	getEnemy()		{ return enemy; };
+
+	float getMaxHP() { return pMaxHP; };
+	float getCurrHP() { return pCurrHP; };
+	float getMinimumDmg() { return pDamageMin; };
+	float getMaximumDmg() { return pDamageMax; };
 
 	Enemy enemy;
 
@@ -58,11 +68,23 @@ private:
 	string	currentLocation_;
 	float nextLevelExp_;
 
+	bool playersTurn;
 	vector<string> log_;
 
 	//at some point
 	int		backpack[5][5];
 
+	//Battle Stats (HP ETC)
+	float pMaxHP;
+	float pCurrHP;
+
+	float pDamageMin;
+	float pDamageMax;
+
+	float pAccuracy;
+
+	int	pCoins;
+	int tickCounter;
 };
 
 

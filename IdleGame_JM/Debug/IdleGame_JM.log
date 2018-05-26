@@ -1,3 +1,9 @@
-﻿  UserInterface.cpp
-c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\userinterface.cpp(65): warning C4018: '<': signed/unsigned mismatch
+﻿  Player.cpp
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(89): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(90): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(127): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(186): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(190): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(207): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(228): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   IdleGame_JM.vcxproj -> C:\Users\Jake\Desktop\IdleGame_JakeMatt\Debug\IdleGame_JM.exe
