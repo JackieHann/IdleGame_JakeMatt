@@ -119,7 +119,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="useful.h" />
     <ClInclude Include="UserInterface.h" />
+    <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WeaponNames.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleUtils_JH.cpp" />
@@ -128,6 +131,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="UserInterface.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -17,8 +17,8 @@ Player::Player(const string& pName)
 	log_.clear();
 	pMaxHP = 20;
 	pCurrHP = pMaxHP;
-	pDamageMin = 1;
-	pDamageMax = 3;
+	pDamageMin = 5;
+	pDamageMax = 20;
 }
 
 void Player::incExp(const float inc)
@@ -63,7 +63,7 @@ void Player::addToBattleLog(const string & toAdd)
 
 void Player::update()
 {
-	//Should be in player update.
+
 	//If player is currently idling in town
 	if (getCurrAction() == "Idling")
 	{
@@ -140,8 +140,11 @@ void Player::update()
 			if (enemy.eDropRate <= rng)
 			{
 				addToLog("Looted Items");
-				addToBattleLog("You Found [Item] in the Remains!");
-
+				Weapon weap(getLevel());
+				addToBattleLog("You Found [" + weap.getFullWeaponName() +"] !");
+				addToBattleLog("It Has Stats Range: [" + weap.getFullWeaponRange() + "] !");
+				//Auto Equip for now
+				currWeapon = weap;
 			}
 			else
 			{
@@ -247,8 +250,8 @@ void Player::resetStats()
 	pCurrHP = pMaxHP;
 
 	//Do something to calculate these stats later stats based on items
-	pDamageMin = 1;
-	pDamageMax = 3;
+	pDamageMin = currWeapon.getMinDamage();
+	pDamageMax = currWeapon.getMaxDamage();
 
 
 }

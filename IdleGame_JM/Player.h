@@ -6,6 +6,8 @@
 //---------------------------------------------------------------------------
 #include <string>
 #include <vector>
+#include "Weapon.h"
+
 using namespace std;
 
 struct Enemy 
@@ -85,6 +87,8 @@ private:
 
 	int	pCoins;
 	int tickCounter;
+
+	Weapon currWeapon;
 };
 
 

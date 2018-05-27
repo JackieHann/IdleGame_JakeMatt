@@ -1,9 +1,21 @@
-﻿  Player.cpp
+﻿  Weapon.cpp
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\weapon.cpp(51): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\weapon.cpp(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
 c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(89): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(90): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
 c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(127): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(186): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(190): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(207): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(228): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(189): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(193): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(210): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(231): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(253): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jake\desktop\idlegame_jakematt\idlegame_jm\player.cpp(254): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  Game.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  UserInterface.cpp
   IdleGame_JM.vcxproj -> C:\Users\Jake\Desktop\IdleGame_JakeMatt\Debug\IdleGame_JM.exe
