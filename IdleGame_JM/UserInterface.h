@@ -26,6 +26,10 @@ public:
 	void	showTitle() const;
 	void	showBattle(Enemy) const;
 	void	showBattleLog(Enemy) const;
+
+	void	showWeaponBag(vector<Weapon>, string space) const;
+	void	showArmourBag(vector<Armour>, string space) const;
+	void	showEquippedItems(vector<Weapon> weapons, vector<Armour> armours) const;
 private:
 	int		readInCommand() const;
 	void	outputLine(const string&) const;

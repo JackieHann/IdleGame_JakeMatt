@@ -85,6 +85,9 @@ void Game::updateUI()
 	theUI_.showTitle();
 	theUI_.showPlayerStatus(thePlayer_->getName(), thePlayer_->getLevel(), thePlayer_->getPercentExp(), thePlayer_->getCurrAction(), thePlayer_->getCurrLocation(), thePlayer_->getMaxHP(), thePlayer_->getCurrHP(), thePlayer_->getMaximumDmg(), thePlayer_->getMinimumDmg());
 	theUI_.showPlayerLog(thePlayer_->getLog());
+	theUI_.showWeaponBag(thePlayer_->getWeapons(), thePlayer_->getWeaponSpace());
+	theUI_.showArmourBag(thePlayer_->getArmours(), thePlayer_->getArmourSpace());
+	theUI_.showEquippedItems(thePlayer_->getEquippedWeapon(), thePlayer_->getEquippedArmour());
 
 	//If battle dialogue should be shown
 	if (thePlayer_->getCurrAction() == "Battling" || thePlayer_->getCurrAction() == "Looting" || thePlayer_->getCurrAction() == "Returning")
