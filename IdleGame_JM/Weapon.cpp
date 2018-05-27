@@ -18,15 +18,15 @@ Weapon::Weapon(int level)
 
 	//Set rarity of the new item
 	int iRarity = rand() % 100 + 1;
-	if (iRarity >= 95)		//5% chance
+	if (iRarity >= 99)		//1% chance
 		rarity = 4;
-	else if (iRarity >= 85) //10% chance
+	else if (iRarity >= 94) //5% chance
 		rarity = 3;
-	else if (iRarity >= 70) //15% chance
+	else if (iRarity >= 80) //14% chance
 		rarity = 2;
-	else if (iRarity >= 50)	//20% chance
+	else if (iRarity >= 55)	//25% chance
 		rarity = 1;
-	else					//50% chance
+	else					//55% chance
 		rarity = 0;
 	
 	//Select a random weapon type
@@ -43,7 +43,7 @@ Weapon::Weapon(int level)
 	
 	//Default range
 	float tempMin = 1;
-	float tempMax = 2;
+	float tempMax = 1;
 	
 	//Take into account the prefix (ie base damage);
 	tempMin += Prefixes.at(iPrefix).value;
@@ -60,15 +60,19 @@ Weapon::Weapon(int level)
 	attackSpeed = Weapons.at(iName).value;
 	
 	//Take into account rarity
-	tempMin *= (1.0f + (rarity / 10.0f));
-	tempMax *= (1.0f + (rarity / 10.0f));
+	float rarityMultiplier = sqrt(rarity);
+	if (rarityMultiplier == 0.0f)
+		rarityMultiplier = 1.0f;
+
+	tempMin *= rarityMultiplier;
+	tempMax *= rarityMultiplier;
 	
 	//Scale down to level ye whatever
 	tempMin *= (level / 2.0f);
 	tempMax *= (level / 2.0f);
 	
 	minDmg = (int)floor(tempMin);
-	maxDmg = (int)floor(tempMax);
+	maxDmg = (int)ceil(tempMax);
 }
 
 string Weapon::getFullWeaponName()
@@ -78,5 +82,5 @@ string Weapon::getFullWeaponName()
 
 string Weapon::getFullWeaponRange()
 {
-	return (to_string(getMinDamage()) + " ~ " + to_string(getMaxDamage()));
+	return (to_string(getMinDamage()) + "~" + to_string(getMaxDamage()));
 }

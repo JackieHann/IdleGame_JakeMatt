@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "Weapon.h"
+#include "Armour.h"
 
 using namespace std;
 
@@ -31,11 +32,14 @@ public:
 
 	Player();
 	Player(const string&);
+	~Player();
 
 	void incExp(const float);
 	void setCurrAction(const string& str) { currentAction_ = str; };
 	void addToLog(const string&);
 	void addToBattleLog(const string&);
+	void addToWeaponBag(const Weapon&);
+	void addToArmourBag(const Armour&);
 	void update();
 
 	void setupEnemy();
@@ -44,18 +48,27 @@ public:
 
 	void resetStats();
 
-	string	getName()		{ return name_; };
-	int		getLevel()		{ return level_; };
-	float	getPercentExp() { return ((float)(int)(currentExp_ / nextLevelExp_ * 100.0f)); };
-	string	getCurrAction()	{ return currentAction_; };
-	string	getCurrLocation(){ return currentLocation_; };
-	vector<string> getLog() { return log_; };
-	Enemy	getEnemy()		{ return enemy; };
+	string	getName()			{ return name_; };
+	int		getLevel()			{ return level_; };
+	float	getPercentExp()		{ return ((float)(int)(currentExp_ / nextLevelExp_ * 100.0f)); };
+	string	getCurrAction()		{ return currentAction_; };
+	string	getCurrLocation()	{ return currentLocation_; };
 
-	float getMaxHP() { return pMaxHP; };
-	float getCurrHP() { return pCurrHP; };
-	float getMinimumDmg() { return pDamageMin; };
-	float getMaximumDmg() { return pDamageMax; };
+	vector<string> getLog()		{ return log_; };
+	vector<Weapon> getWeapons() { return weaponBag; };
+	vector<Armour> getArmours() { return armourBag; };
+	string getWeaponSpace();
+	string getArmourSpace();
+
+	vector<Weapon> getEquippedWeapon();
+	vector<Armour> getEquippedArmour();
+
+	Enemy	getEnemy()			{ return enemy; };
+
+	float getMaxHP()			{ return pMaxHP; };
+	float getCurrHP()			{ return pCurrHP; };
+	float getMinimumDmg()		{ return pDamageMin; };
+	float getMaximumDmg()		{ return pDamageMax; };
 
 	Enemy enemy;
 
@@ -74,7 +87,11 @@ private:
 	vector<string> log_;
 
 	//at some point
-	int		backpack[5][5];
+	vector<Weapon> weaponBag;
+	vector<Armour> armourBag;
+	int maxWeaponBagLimit = 5;
+	int maxArmourBagLimit = 10;
+	
 
 	//Battle Stats (HP ETC)
 	float pMaxHP;
@@ -88,7 +105,14 @@ private:
 	int	pCoins;
 	int tickCounter;
 
-	Weapon currWeapon;
+	Weapon *weapon;
+
+	Armour *head;
+	Armour *body;
+	Armour *legs;
+	Armour *feet;
+	Armour *hands;
+	Armour *waist;
 };
 
 

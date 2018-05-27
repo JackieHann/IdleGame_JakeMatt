@@ -31,21 +31,21 @@ string UserInterface::showNameInputAndGet() const
 void UserInterface::showPlayerStatus(string pName, int pLevel, float pExp, string pAct, string pLoc, float pMaxHP, float pCurrHP, float pDamageMax, float pDamageMin) const
 {
 	//Setup UI
-	ShowMessage(clBlack, clCyan, 2, 8, "-<STATS>-------------------------------------");
-	ShowMessage(clBlack, clCyan, 2, 9, "|                                           |");
-	ShowMessage(clBlack, clCyan, 2, 10,"|                                           |");
-	ShowMessage(clBlack, clCyan, 2, 11, "|                                           |");
-	ShowMessage(clBlack, clCyan, 2, 12,"---------------------------------------------");
+	ShowMessage(clBlack, clYellow, 2, 7, "-<STATS>-------------------------------------");
+	ShowMessage(clBlack, clYellow, 2, 8, "|                                           |");
+	ShowMessage(clBlack, clYellow, 2, 9,"|                                           |");
+	ShowMessage(clBlack, clYellow, 2, 10,"|                                           |");
+	ShowMessage(clBlack, clYellow, 2, 11,"---------------------------------------------");
 
-	SelectTextColour(clRed);
+	SelectTextColour(clWhite);
 	//Write player stuff to screen
-	Gotoxy(5, 9);
+	Gotoxy(5, 8);
 	cout << "Name:" << pName << "  |  Lv:" << pLevel << "  |  Exp: " << pExp << "%";
 	
-	Gotoxy(5, 10);
+	Gotoxy(5, 9);
 	cout << "Health: [" << pCurrHP << " / " << pMaxHP << "]  Dmg: " << pDamageMin << " ~ " << pDamageMax;
 
-	Gotoxy(5, 11);
+	Gotoxy(5, 10);
 	cout << "Currently: " << pAct << " in " << pLoc;
 
 
@@ -55,18 +55,18 @@ void UserInterface::showPlayerStatus(string pName, int pLevel, float pExp, strin
 void UserInterface::showPlayerLog(vector<string> pLog) const
 {
 	//Setup UI
-	ShowMessage(clBlack, clCyan, 50, 2, "-<LOG>----------------");
-	ShowMessage(clBlack, clCyan, 50, 3, "|                    |");
-	ShowMessage(clBlack, clCyan, 50, 4, "|                    |");
-	ShowMessage(clBlack, clCyan, 50, 5, "|                    |");
-	ShowMessage(clBlack, clCyan, 50, 6, "|                    |");
-	ShowMessage(clBlack, clCyan, 50, 7, "|                    |");
-	ShowMessage(clBlack, clCyan, 50, 8, "|                    |");
-	ShowMessage(clBlack, clCyan, 50, 9, "|                    |");
-	ShowMessage(clBlack, clCyan, 50, 10,"|                    |");
-	ShowMessage(clBlack, clCyan, 50, 11,"----------------------");
+	ShowMessage(clBlack, clYellow, 50, 2, "-<LOG>----------------");
+	ShowMessage(clBlack, clYellow, 50, 3, "|                    |");
+	ShowMessage(clBlack, clYellow, 50, 4, "|                    |");
+	ShowMessage(clBlack, clYellow, 50, 5, "|                    |");
+	ShowMessage(clBlack, clYellow, 50, 6, "|                    |");
+	ShowMessage(clBlack, clYellow, 50, 7, "|                    |");
+	ShowMessage(clBlack, clYellow, 50, 8, "|                    |");
+	ShowMessage(clBlack, clYellow, 50, 9, "|                    |");
+	ShowMessage(clBlack, clYellow, 50, 10,"|                    |");
+	ShowMessage(clBlack, clYellow, 50, 11,"----------------------");
 
-	SelectTextColour(clRed);
+	SelectTextColour(clDarkGrey);
 	if (pLog.size() != 0)
 	{
 		for (int i = 0; i < pLog.size(); i++)
@@ -79,29 +79,29 @@ void UserInterface::showPlayerLog(vector<string> pLog) const
 
 void UserInterface::showTitle() const
 {
-	ShowMessage(clBlack, clCyan, 2, 2, "                                       ");
-	ShowMessage(clBlack, clCyan, 2, 3, "                                       ");
-	ShowMessage(clBlack, clCyan, 2, 4, "          Title Goes Here              ");
-	ShowMessage(clBlack, clCyan, 2, 5, "                                       ");
-	ShowMessage(clBlack, clCyan, 2, 6, "                                       ");
+	ShowMessage(clBlack, clYellow, 2, 2, "    _______________________________   ");
+	ShowMessage(clBlack, clYellow, 2, 3, "   /                               \\  ");
+	ShowMessage(clBlack, clYellow, 2, 4, "  |     IDLE GAME - JAKE H :)       | ");
+	ShowMessage(clBlack, clYellow, 2, 5, "   \\_______________________________/  ");
+	ShowMessage(clBlack, clYellow, 2, 6, "                                      ");
 
 }
 
 void UserInterface::showBattle(Enemy enemy) const
 {
 	//Setup UI
-	ShowMessage(clBlack, clCyan, 74, 2, "-<Most Recent Enemy>-------------------------");
-	ShowMessage(clBlack, clCyan, 74, 3, "| ________                                  |");
-	ShowMessage(clBlack, clCyan, 74, 4, "| |      |                                  |");
-	ShowMessage(clBlack, clCyan, 74, 5, "| | PIC~ |                                  |");
-	ShowMessage(clBlack, clCyan, 74, 6, "| |______|                                  |");
-	ShowMessage(clBlack, clCyan, 74, 7, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 8, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 9, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 10,"|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 11,"---------------------------------------------");
+	ShowMessage(clBlack, clYellow, 74, 2, "-<Most Recent Enemy>-------------------------");
+	ShowMessage(clBlack, clYellow, 74, 3, "| ________                                  |");
+	ShowMessage(clBlack, clYellow, 74, 4, "| |      |                                  |");
+	ShowMessage(clBlack, clYellow, 74, 5, "| | PIC~ |                                  |");
+	ShowMessage(clBlack, clYellow, 74, 6, "| |______|                                  |");
+	ShowMessage(clBlack, clYellow, 74, 7, "|                                           |");
+	ShowMessage(clBlack, clYellow, 74, 8, "|                                           |");
+	ShowMessage(clBlack, clYellow, 74, 9, "|                                           |");
+	ShowMessage(clBlack, clYellow, 74, 10,"|                                           |");
+	ShowMessage(clBlack, clYellow, 74, 11,"---------------------------------------------");
 
-	SelectTextColour(clRed);
+	SelectTextColour(clWhite);
 
 	Gotoxy(84, 4);
 	cout << "  Name:  " << enemy.eName;
@@ -123,18 +123,19 @@ void UserInterface::showBattle(Enemy enemy) const
 
 void UserInterface::showBattleLog(Enemy enemy) const
 {
-
+	int y = 13;
+	int x = 74;
 	//Setup Battle Log
-	ShowMessage(clBlack, clCyan, 74, 13, "-<Battle Log>--------------------------------");
-	ShowMessage(clBlack, clCyan, 74, 14, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 15, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 16, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 17, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 18, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 19, "|                                           |");
-	ShowMessage(clBlack, clCyan, 74, 20, "---------------------------------------------");
+	ShowMessage(clBlack, clYellow, x, y,		"-<Battle Log>--------------------------------");
+	ShowMessage(clBlack, clYellow, x, y + 1,	"|                                           |");
+	ShowMessage(clBlack, clYellow, x, y + 2,	"|                                           |");
+	ShowMessage(clBlack, clYellow, x, y + 3,	"|                                           |");
+	ShowMessage(clBlack, clYellow, x, y + 4,	"|                                           |");
+	ShowMessage(clBlack, clYellow, x, y + 5,	"|                                           |");
+	ShowMessage(clBlack, clYellow, x, y + 6,	"|                                           |");
+	ShowMessage(clBlack, clYellow, x, y + 7,	"---------------------------------------------");
 
-	SelectTextColour(clRed);
+	SelectTextColour(clWhite);
 	if (enemy.battleLog.size() != 0)
 	{
 		for (int i = 0; i < enemy.battleLog.size(); i++)
@@ -142,6 +143,182 @@ void UserInterface::showBattleLog(Enemy enemy) const
 			Gotoxy(76, i + 14);
 			cout << enemy.battleLog.at(i);
 		}
+	}
+}
+
+void UserInterface::showWeaponBag(vector<Weapon> weapons, string backpackSpace) const
+{
+	int y = 24;
+	int x = 2;
+
+	//Top border
+	ShowMessage(clBlack, clYellow, x, y,									"-<Weapon Bag>-----------------------<Damage>-");
+	for (int i = 0; i < weapons.size(); i++)
+	{
+		ShowMessage(clBlack, clYellow, x, y + i + 1, "|                                           |");
+		Gotoxy(x + 2, y + i + 1);
+		//Output weapon number in bag
+		SelectTextColour(clWhite);
+		cout << to_string(i + 1) << "] ";
+
+		//Colour weapon text based on rarity
+		switch (weapons.at(i).getRarity())
+		{
+		case 0:
+			SelectTextColour(clDarkGrey);
+			break;
+		case 1:
+			SelectTextColour(clGreen);
+			break;
+		case 2:
+			SelectTextColour(clCyan);
+			break;
+		case 3:
+			SelectTextColour(clDarkMagenta);
+			break;
+		case 4:
+			SelectTextColour(clYellow);
+			break;
+		}
+		cout << weapons.at(i).getFullWeaponName();
+
+		//Show weapons range
+		SelectTextColour(clWhite);
+		Gotoxy(x + 34, y + i + 1);
+		cout << "| " << weapons.at(i).getFullWeaponRange();
+	}
+	//Bottom Border
+	ShowMessage(clBlack, clYellow, x, y + weapons.size() + 1,				backpackSpace + "-------------------------------------");
+}
+
+void UserInterface::showArmourBag(vector<Armour> armours, string backpackSpace) const
+{
+	int y = 24;
+	int x = 50;
+
+	//Top border
+	ShowMessage(clBlack, clYellow, x, y, "-<Armour Bag>------------------------<Bonus>-");
+	for (int i = 0; i < armours.size(); i++)
+	{
+		ShowMessage(clBlack, clYellow, x, y + i + 1, "|                                           |");
+		Gotoxy(x + 2, y + i + 1);
+		//Output weapon number in bag
+		SelectTextColour(clWhite);
+		cout << to_string(i + 1) << "] ";
+
+		//Colour weapon text based on rarity
+		switch (armours.at(i).getRarity())
+		{
+		case 0:
+			SelectTextColour(clDarkGrey);
+			break;
+		case 1:
+			SelectTextColour(clGreen);
+			break;
+		case 2:
+			SelectTextColour(clCyan);
+			break;
+		case 3:
+			SelectTextColour(clDarkMagenta);
+			break;
+		case 4:
+			SelectTextColour(clYellow);
+			break;
+		}
+		cout << armours.at(i).getFullArmourName();
+
+		//Show weapons range
+		SelectTextColour(clWhite);
+		Gotoxy(x + 34, y + i + 1);
+		cout << "| " << armours.at(i).getFullArmourValue();
+	}
+	//Bottom Border
+	ShowMessage(clBlack, clYellow, x, y + armours.size() + 1, backpackSpace + "-------------------------------------");
+}
+
+void UserInterface::showEquippedItems(vector<Weapon> weapons, vector<Armour> armours) const
+{
+	int y = 13;
+	int x = 2;
+
+	//Top border
+	ShowMessage(clBlack, clYellow, x, y,		"-<Equipped Items>-----------------------------<Bonus>----<Sell Price>-");
+	ShowMessage(clBlack, clYellow, x, y+ 1,		"| Weapon  ->                                                         |");
+	ShowMessage(clBlack, clYellow, x, y+ 2,		"| Offhand ->                                                         |");
+	ShowMessage(clBlack, clYellow, x, y + 3,	"| Head    ->                                                         |");
+	ShowMessage(clBlack, clYellow, x, y + 4,	"| Body    ->                                                         |");
+	ShowMessage(clBlack, clYellow, x, y + 5,	"| Legs    ->                                                         |");;
+	ShowMessage(clBlack, clYellow, x, y + 6,	"| Feet    ->                                                         |");
+	ShowMessage(clBlack, clYellow, x, y + 7,	"| Hands   ->                                                         |");
+	ShowMessage(clBlack, clYellow, x, y + 8,	"| Waist   ->                                                         |");
+	ShowMessage(clBlack, clYellow, x, y + 9,	"----------------------------------------------------------------------");
+
+	//Show weapons;
+	for (int i = 0; i < weapons.size(); i++)
+	{
+		Gotoxy(x + 14, y + i + 1);
+		//Output weapon number in bag
+		SelectTextColour(clWhite);
+	
+		//Colour weapon text based on rarity
+		switch (weapons.at(i).getRarity())
+		{
+		case 0:
+			SelectTextColour(clDarkGrey);
+			break;
+		case 1:
+			SelectTextColour(clGreen);
+			break;
+		case 2:
+			SelectTextColour(clCyan);
+			break;
+		case 3:
+			SelectTextColour(clDarkMagenta);
+			break;
+		case 4:
+			SelectTextColour(clYellow);
+			break;
+		}
+		cout << weapons.at(i).getFullWeaponName();
+	
+		//Show weapons range
+		SelectTextColour(clWhite);
+		Gotoxy(x + 45, y + i + 1);
+		cout << "| + " << weapons.at(i).getFullWeaponRange() +" Dmg";
+	}
+
+	//Show armour
+	for (int i = 0; i < armours.size(); i++)
+	{
+		Gotoxy(x + 14, y + i + 3);
+		//Output weapon number in bag
+		SelectTextColour(clWhite);
+
+		//Colour weapon text based on rarity
+		switch (armours.at(i).getRarity())
+		{
+		case 0:
+			SelectTextColour(clDarkGrey);
+			break;
+		case 1:
+			SelectTextColour(clGreen);
+			break;
+		case 2:
+			SelectTextColour(clCyan);
+			break;
+		case 3:
+			SelectTextColour(clDarkMagenta);
+			break;
+		case 4:
+			SelectTextColour(clYellow);
+			break;
+		}
+		cout << armours.at(i).getFullArmourName();
+	
+		//Show weapons range
+		SelectTextColour(clWhite);
+		Gotoxy(x + 45, y + i + 3);
+		cout << "| " << armours.at(i).getFullArmourValue();
 	}
 }
 

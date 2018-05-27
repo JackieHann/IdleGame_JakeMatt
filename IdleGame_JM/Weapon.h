@@ -3,14 +3,8 @@
 
 #include <string>
 #include <vector>
-//#include "WeaponNames.h"
+#include "Header.h"
 using namespace std;
-
-struct NameValue
-{
-	string name;
-	float value;
-};
 
 class Weapon {
 public:
@@ -20,8 +14,9 @@ public:
 	virtual string getItemType() { return "Weapon"; };
 	string getWeaponType() { return name; };
 
-	int getMinDamage() { return minDmg; };
-	int getMaxDamage() { return maxDmg; };
+	int getMinDamage()	{ return minDmg; };
+	int getMaxDamage()	{ return maxDmg; };
+	int getRarity()		{ return rarity; };
 
 	string getFullWeaponName();
 	string getFullWeaponRange();
@@ -42,24 +37,22 @@ public:
 	vector<NameValue> Prefixes
 	{
 		//Name followed by min damage boost
-		{ "Demonic",		1 },
-		{ "Infernal",	2 },
-		{ "Glacial",		3 },
-		{ "Ominous",		4 },
-		{ "Sharp",		5 },
-		{ "Blunt",		6 },
-		{ "Zealous",		7 }
+		{ "Bad",		0.0f },
+		{ "Normal",		0.5f },
+		{ "Good",		1.0f },
+		{ "Great",		1.5f },
+		{ "Insane",		2.0f }
+
 	};
 
 	vector<NameValue> Suffixes
 	{
 		//Name followed by max damage boost
-		{ "Hell",		1 },
-		{ "Heaven",		2 },
-		{ "God",			3 },
-		{ "Memes",		4 },
-		{ "Tortellini",	5 },
-		{ "Phlava",		6 }
+		{ "Bad",		0.0f },
+		{ "Normal",		0.5f },
+		{ "Good",		1.0f },
+		{ "Great",		1.5f },
+		{ "Insane",		2.0f }
 	};
 
 	int numOfWeapons = Weapons.size();

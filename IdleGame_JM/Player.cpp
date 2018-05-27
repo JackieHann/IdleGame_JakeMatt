@@ -12,13 +12,43 @@ Player::Player(const string& pName)
 	currentLocation_("Starter Town"),
 	nextLevelExp_(10.0f),
 	playersTurn(true)
-
 {
+	enemy.battleLog.clear();
+	weaponBag.clear();
 	log_.clear();
 	pMaxHP = 20;
 	pCurrHP = pMaxHP;
 	pDamageMin = 5;
 	pDamageMax = 20;
+
+	weapon = new Weapon();
+	head = new Armour("Damaged", 0, "Training");
+	body = new Armour("Damaged", 1, "Training");
+	legs = new Armour("Damaged", 2, "Training");
+	feet = new Armour("Damaged", 3, "Training");
+	hands = new Armour("Damaged", 4, "Training");
+	waist = new Armour("Damaged", 5, "Training");
+
+	//addToWeaponBag(*weapon);
+	//addToArmourBag(*head);
+	//addToArmourBag(*body);
+	//addToArmourBag(*legs);
+	//addToArmourBag(*feet);
+	//addToArmourBag(*hands);
+	//addToArmourBag(*waist);
+
+}
+
+Player::
+~Player()
+{
+	delete weapon;
+	delete head;
+	delete body;
+	delete legs;
+	delete feet;
+	delete hands;
+	delete waist;
 }
 
 void Player::incExp(const float inc)
@@ -61,17 +91,31 @@ void Player::addToBattleLog(const string & toAdd)
 	enemy.battleLog.push_back(toAdd);
 }
 
+void Player::addToWeaponBag(const Weapon& weap)
+{
+	if (weaponBag.size() < maxWeaponBagLimit)
+		weaponBag.push_back(weap);
+	else
+		addToBattleLog("But the bag was full!!");
+}
+
+void Player::addToArmourBag(const Armour& arm)
+{
+	if (armourBag.size() < maxArmourBagLimit)
+		armourBag.push_back(arm);
+	else
+		addToBattleLog("But the bag was full!!");
+}
+
 void Player::update()
 {
-
 	//If player is currently idling in town
 	if (getCurrAction() == "Idling")
 	{
 		setCurrAction("Searching");
 		addToLog("Searching for Enemy");
 	}
-		
-
+	//If player is currently searching for a battle
 	else if (getCurrAction() == "Searching")
 	{
 		setCurrAction("Battling");
@@ -80,8 +124,7 @@ void Player::update()
 		setupEnemy();
 		resetStats();
 	}
-		
-
+	//If player is currently battling
 	else if (getCurrAction() == "Battling")
 	{
 		if (enemy.eCurrHP == 0.0f)
@@ -113,7 +156,7 @@ void Player::update()
 
 		
 	}	
-
+	//If player is looting
 	else if (getCurrAction() == "Looting")
 	{
 		tickCounter += 1;
@@ -137,14 +180,25 @@ void Player::update()
 		else if (tickCounter == 6)
 		{
 			int rng = rand() % 100 + 1;
-			if (enemy.eDropRate <= rng)
+			if (enemy.eDropRate >= rng)
 			{
 				addToLog("Looted Items");
-				Weapon weap(getLevel());
-				addToBattleLog("You Found [" + weap.getFullWeaponName() +"] !");
-				addToBattleLog("It Has Stats Range: [" + weap.getFullWeaponRange() + "] !");
-				//Auto Equip for now
-				currWeapon = weap;
+
+				int rnd = rand() % 2;
+				if (rnd == 1)
+				{
+					Weapon weap(getLevel());
+					addToWeaponBag(weap);
+					addToBattleLog("You Found [" + weap.getFullWeaponName() + "] !");
+					addToBattleLog("It Has Stats Range: [" + weap.getFullWeaponRange() + "] !");
+				}
+				else
+				{
+					Armour arm(getLevel());
+					addToArmourBag(arm);
+					addToBattleLog("You Found [" + arm.getFullArmourName() + "] !");
+					addToBattleLog("It Has Stats: [" + arm.getFullArmourValue() + "] !");
+				}		
 			}
 			else
 			{
@@ -168,8 +222,7 @@ void Player::update()
 		}
 
 	}
-		
-
+	//If player is returning to home
 	else if (getCurrAction() == "Returning")
 	{
 		setCurrAction("Idling");
@@ -197,7 +250,7 @@ void Player::setupEnemy()
 	enemy.eAccuracy = 50;
 
 	//50% drop rate test
-	enemy.eDropRate = 50;
+	enemy.eDropRate = 100;
 
 	//Remove previous logs
 	addToBattleLog("---<New Battle>--- [ VS ] ---<" + enemy.eName + ">---");
@@ -231,7 +284,7 @@ void Player::attackPlayer()
 	int damageDealt = (rand() % (int)(enemy.eDamageMax - enemy.eDamageMin + 1)) + enemy.eDamageMin;
 	pCurrHP -= damageDealt;
 
-	if (pCurrHP < 0)
+	if (pCurrHP <= 0)
 	{
 		pCurrHP = 0;
 		addToLog(enemy.eName + " defeated " + name_);
@@ -250,9 +303,8 @@ void Player::resetStats()
 	pCurrHP = pMaxHP;
 
 	//Do something to calculate these stats later stats based on items
-	pDamageMin = currWeapon.getMinDamage();
-	pDamageMax = currWeapon.getMaxDamage();
-
+	pDamageMin = weapon->getMinDamage();
+	pDamageMax = weapon->getMaxDamage();
 
 }
 
@@ -264,6 +316,69 @@ void Player::levelUp()
 	level_++;
 	nextLevelExp_ = level_ * 10.0f;
 
+}
+
+string Player::getWeaponSpace()
+{
+	int maxAmt = maxWeaponBagLimit;
+	int currentAmt = weaponBag.size();
+	
+	string str = "-<";
+	if (currentAmt < 10)
+		str += "0";
+
+	str += to_string(currentAmt);
+	str += "/";
+
+	if (maxAmt < 10)
+		str += "0";
+	str += to_string(maxAmt);
+	str += ">";
+
+	return str;
+}
+
+string Player::getArmourSpace()
+{
+	int maxAmt = maxArmourBagLimit;
+	int currentAmt = armourBag.size();
+
+	string str = "-<";
+	if (currentAmt < 10)
+		str += "0";
+
+	str += to_string(currentAmt);
+	str += "/";
+
+	if (maxAmt < 10)
+		str += "0";
+	str += to_string(maxAmt);
+	str += ">";
+
+	return str;
+}
+
+vector<Weapon> Player::getEquippedWeapon()
+{
+	vector<Weapon> temp;
+
+	temp.push_back(*weapon);
+
+	return temp;
+}
+
+vector<Armour> Player::getEquippedArmour()
+{
+	vector<Armour> temp;
+
+	temp.push_back(*head);
+	temp.push_back(*body);
+	temp.push_back(*legs);
+	temp.push_back(*feet);
+	temp.push_back(*hands);
+	temp.push_back(*waist);
+
+	return temp;
 }
 
 

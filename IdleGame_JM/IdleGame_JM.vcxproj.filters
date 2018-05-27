@@ -42,6 +42,12 @@
     <ClInclude Include="useful.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Armour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Item Lists</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleUtils_JH.cpp">
@@ -63,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Armour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
